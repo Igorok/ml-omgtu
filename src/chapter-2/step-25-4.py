@@ -5,13 +5,20 @@
 import pandas as pd
 
 P = [1,0,5,2,2]
-def main():
-	df = pd.DataFrame(data={'p' : P})
-	std = df.std()
-	mean = df.mean()
-	metric = (P[-1] - mean) / std
 
-	print('std', std, 'mean', mean, 'metric', metric)
+def normal(value, mean, std):
+    return (value - mean) / std
+
+def main():
+    df = pd.DataFrame(data={'p' : P})
+    std = df.std()
+    mean = df.mean()
+    metric = normal(P[-1], mean, std)
+
+    print('std', std, 'mean', mean, 'metric', metric)
+
+    for i in range(len(P)):
+        print('value', P[i], normal(P[i], mean, std))
 
 
 if __name__ == '__main__':

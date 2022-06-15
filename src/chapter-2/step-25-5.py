@@ -5,42 +5,44 @@
 '''
 
 movies = [
-	{
-		'name': 'The Silence of the Lambs',
-		'scores': { 'Vasia': 5, 'Petia': 5, 'Masha': 2, 'Sasha': 3, }
-	},
-	{
-		'name': 'Titanic',
-		'scores': { 'Vasia': 5, 'Petia': 3, 'Masha': 5, 'Sasha': 4, }
-	},
-	{
-		'name': 'Matrix',
-		'scores': { 'Vasia': 5, 'Petia': 4, 'Masha': 3, 'Sasha': 4, }
-	},
-	{
-		'name': 'Harry Potter',
-		'scores': { 'Vasia': 3, 'Petia': 4, 'Masha': 5, 'Sasha': -1, }
-	},
+    {
+        'name': 'The Silence of the Lambs',
+        'scores': { 'Vasia': 5, 'Petia': 5, 'Masha': 2, 'Sasha': 3, }
+    },
+    {
+        'name': 'Titanic',
+        'scores': { 'Vasia': 5, 'Petia': 3, 'Masha': 5, 'Sasha': 4, }
+    },
+    {
+        'name': 'Matrix',
+        'scores': { 'Vasia': 5, 'Petia': 4, 'Masha': 3, 'Sasha': 4, }
+    },
+    {
+        'name': 'Harry Potter',
+        'scores': { 'Vasia': 3, 'Petia': 4, 'Masha': 5, 'Sasha': -1, }
+    },
 ]
 
-
-
 def main():
-	metrics = []
+    metrics = []
 
-	for name in ['Vasia', 'Petia', 'Masha']:
-		metric = 0
-		for i in range(3):
-			movie = movies[i]
-			metric += abs(movie['scores'][name] - movie['scores']['Sasha'])
-		metrics.append(metric)
+    for name in ['Vasia', 'Petia', 'Masha']:
+        metric = 0
+        for i in range(3):
+            movie = movies[i]
+            metric += abs(movie['scores'][name] - movie['scores']['Sasha'])
+        metrics.append(metric)
 
-	print('metrics', metrics)
+    print('metrics', metrics)
 
-	left = 1 / (1 / metrics[0] + 1/metrics[1] + 1/metrics[2])
-	right = movies[3]['scores']['Vasia'] / metrics[0] + movies[3]['scores']['Petia'] / metrics[1] + movies[3]['scores']['Masha'] / metrics[2]
+    left = 1 / (1 / metrics[0] + 1/metrics[1] + 1/metrics[2])
+    right = (
+        movies[3]['scores']['Vasia'] / metrics[0]
+        + movies[3]['scores']['Petia'] / metrics[1]
+        + movies[3]['scores']['Masha'] / metrics[2]
+    )
 
-	print(left * right)
+    print(left * right)
 
 if __name__ == '__main__':
     main()
