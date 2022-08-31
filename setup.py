@@ -8,7 +8,8 @@ setup(
     include_package_data=True,
     install_requires=[
         'numpy',
-        'pandas'
+        'pandas',
+        'sympy',
     ],
     # py_modules=['rcviz'],
 )
